@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .option {
+            border: 2px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .selected {
+            border-color: #007f5f;
+            background-color: #d4f8d4;
+            /* Light green background */
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007f5f;
+        }
+
+        .discount {
+            float: right;
+            color: black;
+            font-weight: bold;
+        }
+
+        .input-fields {
+            display: none;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #007f5f;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .demm {
+    display: flex;
+    justify-content: space-between; /* Aligns items at both ends */
+    align-items: center; /* Centers items vertically */
+    /* margin-top: 10px; Add some spacing */
+    
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="option" onclick="selectOption(event, 1, 195)" id="pair1Container">
+            <input type="radio" name="pair"> 1 Pair
+            <span class="discount">50% OFF</span>
+            <div class="price">DKK 195.00</div>
+            <div class="input-fields" id="inputs1">
+                <label>#1</label>
+                <select>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select>
+                    <option>Color</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Black</option>
+                </select>
+                <br><br>
+                <label>#2</label>
+                <select>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select>
+                    <option>Color</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Black</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="option" onclick="selectOption(event, 2, 345)" id="pair2Container">
+            <input type="radio" name="pair"> 2 Pair
+            <span class="discount">40% OFF</span>
+            <div class="price">DKK 345.00</div>
+            <div class="input-fields" id="inputs2">
+                <label>#1</label>
+                <select>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select>
+                    <option>Color</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Black</option>
+                </select>
+                <br><br>
+                <label>#2</label>
+                <select>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select>
+                    <option>Color</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Black</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="option" onclick="selectOption(event, 3, 528)" id="pair3Container">
+            <input type="radio" name="pair"> 3 Pair
+            <span class="discount">60% OFF</span>
+            <div class="price">DKK 528.00</div>
+            <div class="input-fields" id="inputs3">
+                <label>#1</label>
+                <select>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select>
+                    <option>Color</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Black</option>
+                </select>
+                <br><br>
+                <label>#2</label>
+                <select>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <select>
+                    <option>Color</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Black</option>
+                </select>
+            </div>
+        </div>
+        <div class="demm">
+            <div >
+                <p style="color: #007f5f;">Free 2 Day Shipping</p>
+            </div>
+            <div class="total">Total : <span id="totalPrice">DKK 195.00</span></div>
+        </div>
+        <br>
+        <button>+ Add to Cart</button>
+    </div>
+
+    <script>
+        function selectOption(event, pair, price) {
+            document.getElementById("totalPrice").innerText = "DKK " + price.toFixed(2);
+
+            // Remove previous selection styles
+            document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+            event.currentTarget.classList.add("selected");
+
+            // Hide all input fields first
+            document.querySelectorAll(".input-fields").forEach(field => field.style.display = "none");
+
+            // Show only the selected input fields
+            document.getElementById(`inputs${pair}`).style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
