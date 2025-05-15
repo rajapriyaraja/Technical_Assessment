@@ -35,7 +35,6 @@
         .selected {
             border-color: #007f5f;
             background-color: #d4f8d4;
-            /* Light green background */
         }
 
         .price {
@@ -65,15 +64,11 @@
             cursor: pointer;
             font-size: 16px;
         }
-
         .demm {
     display: flex;
-    justify-content: space-between; /* Aligns items at both ends */
-    align-items: center; /* Centers items vertically */
-    /* margin-top: 10px; Add some spacing */
-    
+    justify-content: space-between; 
+    align-items: center;    
 }
-
     </style>
 </head>
 
@@ -191,17 +186,13 @@
         function selectOption(event, pair, price) {
             document.getElementById("totalPrice").innerText = "DKK " + price.toFixed(2);
 
-            // Remove previous selection styles
             document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
             event.currentTarget.classList.add("selected");
 
-            // Hide all input fields first
             document.querySelectorAll(".input-fields").forEach(field => field.style.display = "none");
 
-            // Show only the selected input fields
             document.getElementById(`inputs${pair}`).style.display = "block";
         }
     </script>
 </body>
-
 </html>
